@@ -65,10 +65,11 @@ const MisPrendas = () => {
   const [mensaje, setMensaje] = useState("");
   const navigate = useNavigate();
 
+
   useEffect(() => {
     if (isTokenExpired(token)) {
-      localStorage.removeItem('token'); // Elimina el token expirado
-      navigate('/login'); // Redirige al usuario a la pantalla de inicio de sesión
+      localStorage.removeItem('token'); 
+      navigate('/login'); 
     }
   }, [token, navigate]);
 
