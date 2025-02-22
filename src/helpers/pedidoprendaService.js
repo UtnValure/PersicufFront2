@@ -4,7 +4,7 @@ import {getHeaders} from "./headerService"
 // GET
 export async function getPedidosPrenda() {
     try {
-        const response = await axios.get("https://persicuf.up.railway.app/api/PedidoPrenda/obtenerPedidosPrenda");
+        const response = await axios.get("https://persicufback-production.up.railway.app/api/PedidoPrenda/obtenerPedidosPrenda");
         return response.data;
     } catch (error) {
         console.error(error.response);
@@ -15,7 +15,7 @@ export async function getPedidosPrenda() {
 // POST
 export async function createPedidoPrenda(nuevoPedidoPrenda) {
     try {
-        const response = await axios.post("https://persicuf.up.railway.app/api/PedidoPrenda/crearPedidoPrenda", nuevoPedidoPrenda, {
+        const response = await axios.post("https://persicufback-production.up.railway.app/api/PedidoPrenda/crearPedidoPrenda", nuevoPedidoPrenda, {
             headers: getHeaders(),
         });
 
@@ -29,7 +29,7 @@ export async function createPedidoPrenda(nuevoPedidoPrenda) {
 //DELETE
 export async function deletePedidoPrenda(PedidoId) {
     try {
-        const response = await axios.delete(`https://persicuf.up.railway.app/api/PedidoPrenda/eliminarPedidoPrenda?ID=${PedidoId}`, {
+        const response = await axios.delete(`https://persicufback-production.up.railway.app/api/PedidoPrenda/eliminarPedidoPrenda?ID=${PedidoId}`, {
             headers: getHeaders(),
         });
 

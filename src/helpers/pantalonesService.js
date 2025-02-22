@@ -4,7 +4,7 @@ import {getHeaders} from "./headerService"
 // GET
 export async function getPantalones() {
     try {
-        const response = await axios.get("https://persicuf.up.railway.app/api/Pantalon/obtenerPantalones");
+        const response = await axios.get("https://persicufback-production.up.railway.app/api/Pantalon/obtenerPantalones");
         return response.data; 
     } catch (error) {
         console.error(error.response);
@@ -15,7 +15,7 @@ export async function getPantalones() {
 // buscar
 export async function buscarPantalones(busqueda) {
     try {
-        const response = await axios.get(`https://persicuf.up.railway.app/api/Pantalon/buscarPantalones?busqueda=${busqueda}`);
+        const response = await axios.get(`https://persicufback-production.up.railway.app/api/Pantalon/buscarPantalones?busqueda=${busqueda}`);
         return response.data; 
     } catch (error) {
         console.error(error.response);
@@ -26,7 +26,7 @@ export async function buscarPantalones(busqueda) {
 // POST
 export async function createPantalon(nuevoPantalon) {
     try {
-        const response = await axios.post("https://persicuf.up.railway.app/api/Pantalon/crearPantalon", nuevoPantalon, {
+        const response = await axios.post("https://persicufback-production.up.railway.app/api/Pantalon/crearPantalon", nuevoPantalon, {
             headers: getHeaders(),
         });
 
@@ -40,7 +40,7 @@ export async function createPantalon(nuevoPantalon) {
 //DELETE
 export async function deletePantalon(PantalonId) {
     try {
-        const response = await axios.delete(`https://persicuf.up.railway.app/api/Pantalon/eliminarPantalon?ID=${PantalonId}`, {
+        const response = await axios.delete(`https://persicufback-production.up.railway.app/api/Pantalon/eliminarPantalon?ID=${PantalonId}`, {
             headers: getHeaders(),
         });
 

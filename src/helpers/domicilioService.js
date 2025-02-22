@@ -4,7 +4,7 @@ import {getHeaders} from "./headerService"
 // // GET
 export async function getDomicilios() {
     try {
-        const response = await axios.get("https://persicuf.up.railway.app/api/Domicilio/obtenerDomicilios");
+        const response = await axios.get("https://persicufback-production.up.railway.app/api/Domicilio/obtenerDomicilios");
         return response.data.datos || []; // Devuelve solo el cuerpo de la respuesta
     } catch (error) {
         console.error(error.response);
@@ -15,7 +15,7 @@ export async function getDomicilios() {
 // POST
 export async function createDomicilio(nuevoDomicilio) {
     try {
-        const response = await axios.post("https://persicuf.up.railway.app/api/Domicilio/crearDomicilio", nuevoDomicilio, {
+        const response = await axios.post("https://persicufback-production.up.railway.app/api/Domicilio/crearDomicilio", nuevoDomicilio, {
             headers: getHeaders(),
         });
 
@@ -29,7 +29,7 @@ export async function createDomicilio(nuevoDomicilio) {
 //DELETE
 export async function deleteDomicilio(domicilioId) {
     try {
-        const response = await axios.delete(`https://persicuf.up.railway.app/api/Domicilio/eliminarDomicilio?ID=${domicilioId}`, {
+        const response = await axios.delete(`https://persicufback-production.up.railway.app/api/Domicilio/eliminarDomicilio?ID=${domicilioId}`, {
             headers: getHeaders(),
         });
 

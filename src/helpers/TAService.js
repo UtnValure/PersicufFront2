@@ -4,7 +4,7 @@ import {getHeaders} from "./headerService"
 // Obtener todos los talles
 export async function getTalleAlfabetico() {
     try {
-        const response = await axios.get("https://persicuf.up.railway.app/api/TalleAlfabetico/obtenerTallesAlfabetico");
+        const response = await axios.get("https://persicufback-production.up.railway.app/api/TalleAlfabetico/obtenerTallesAlfabetico");
         return response.data;
     } catch (error) {
         console.error(error.response);
@@ -32,7 +32,7 @@ export async function getTalleAlfabeticoID(nombreTalle) {
 // Crear un nuevo talle
 export async function createTalleAlfabetico(nuevoTA) {
     try {
-        const response = await axios.post("https://persicuf.up.railway.app/api/TalleAlfabetico/crearTalleAlfabetico", nuevoTA, {
+        const response = await axios.post("https://persicufback-production.up.railway.app/api/TalleAlfabetico/crearTalleAlfabetico", nuevoTA, {
             headers: getHeaders(),
         });
 
@@ -46,7 +46,7 @@ export async function createTalleAlfabetico(nuevoTA) {
 // Eliminar un talle
 export async function deleteTalleAlfabetico(TAId) {
     try {
-        const response = await axios.delete(`https://persicuf.up.railway.app/api/TalleAlfabetico/eliminarTalleAlfabetico?ID=${TAId}`, {
+        const response = await axios.delete(`https://persicufback-production.up.railway.app/api/TalleAlfabetico/eliminarTalleAlfabetico?ID=${TAId}`, {
             headers: getHeaders(),
         });
 

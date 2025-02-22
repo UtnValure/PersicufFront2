@@ -23,7 +23,7 @@ export async function getLargoID(nombreLargo) {
 
 export async function getLargos() {
     try {
-        const response = await axios.get("https://persicuf.up.railway.app/api/Largo/obtenerLargos");
+        const response = await axios.get("https://persicufback-production.up.railway.app/api/Largo/obtenerLargos");
         return response.data;
     } catch (error) {
         console.error(error.response);
@@ -33,7 +33,7 @@ export async function getLargos() {
 
 export async function createLargo(nuevoLargo) {
     try {
-        const response = await axios.post("https://persicuf.up.railway.app/api/Largo/crearLargo", nuevoLargo, {
+        const response = await axios.post("https://persicufback-production.up.railway.app/api/Largo/crearLargo", nuevoLargo, {
             headers: getHeaders(),
         });
 
@@ -46,7 +46,7 @@ export async function createLargo(nuevoLargo) {
 
 export async function deleteTalleAlfabetico(LargoId) {
     try {
-        const response = await axios.delete(`https://persicuf.up.railway.app/api/Largo/eliminarLargo?ID=${LargoId}`, {
+        const response = await axios.delete(`https://persicufback-production.up.railway.app/api/Largo/eliminarLargo?ID=${LargoId}`, {
             headers: getHeaders(),
         });
 

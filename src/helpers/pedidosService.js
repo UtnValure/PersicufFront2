@@ -4,7 +4,7 @@ import {getHeaders} from "./headerService"
 // GET
 export async function getPedidos() {
     try {
-        const response = await axios.get("https://persicuf.up.railway.app/api/Pedido/obtenerPedidos");
+        const response = await axios.get("https://persicufback-production.up.railway.app/api/Pedido/obtenerPedidos");
         return response.data; // Devuelve solo el cuerpo de la respuesta
     } catch (error) {
         console.error(error.response);
@@ -17,7 +17,7 @@ export async function getPedidos() {
 // pedidoUsuario
 export async function getPedidosUsuario(ID) {
     try {
-        const response = await axios.get(`https://persicuf.up.railway.app/api/Pedido/obtenerPedidosUsuario?ID=${ID}`, {
+        const response = await axios.get(`https://persicufback-production.up.railway.app/api/Pedido/obtenerPedidosUsuario?ID=${ID}`, {
             headers: getHeaders(),
         });
 
@@ -32,7 +32,7 @@ export async function getPedidosUsuario(ID) {
 // ultimo pedido
 export async function getUltimoPedidoUsuario(ID) {
     try {
-        const response = await axios.get(`https://persicuf.up.railway.app/api/Pedido/obtenerPedidosUsuario?ID=${ID}`);
+        const response = await axios.get(`https://persicufback-production.up.railway.app/api/Pedido/obtenerPedidosUsuario?ID=${ID}`);
         const pedidos = response.data.datos;  // Accede a 'datos' que contiene los pedidos
 
         // Verifica si se obtuvieron pedidos
@@ -53,7 +53,7 @@ export async function getUltimoPedidoUsuario(ID) {
 // POST
 export async function createPedido(nuevoPedido) {
     try {
-        const response = await axios.post("https://persicuf.up.railway.app/api/Pedido/crearPedido", nuevoPedido, {
+        const response = await axios.post("https://persicufback-production.up.railway.app/api/Pedido/crearPedido", nuevoPedido, {
             headers: getHeaders(),
         });
 
@@ -67,7 +67,7 @@ export async function createPedido(nuevoPedido) {
 //DELETE
 export async function deletePedido(pedidoId) {
     try {
-        const response = await axios.delete(`https://persicuf.up.railway.app/api/Pedido/eliminarPedido?ID=${pedidoId}`, {
+        const response = await axios.delete(`https://persicufback-production.up.railway.app/api/Pedido/eliminarPedido?ID=${pedidoId}`, {
             headers: getHeaders(),
         });
 
@@ -79,7 +79,7 @@ export async function deletePedido(pedidoId) {
 
 export async function putPedido(pedidoId, pedidoModificado) {
     try {
-        const response = await axios.put(`https://persicuf.up.railway.app/api/Pedido/modificarPedido?ID=${pedidoId}`, pedidoModificado, {
+        const response = await axios.put(`https://persicufback-production.up.railway.app/api/Pedido/modificarPedido?ID=${pedidoId}`, pedidoModificado, {
             headers: getHeaders(),
         });
 

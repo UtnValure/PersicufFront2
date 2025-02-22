@@ -4,7 +4,7 @@ import {getHeaders} from "./headerService"
 // GET
 export async function getZapatos() {
     try {
-        const response = await axios.get("https://persicuf.up.railway.app/api/Zapato/obtenerZapatos");
+        const response = await axios.get("https://persicufback-production.up.railway.app/api/Zapato/obtenerZapatos");
         return response.data; // Devuelve solo el cuerpo de la respuesta
     } catch (error) {
         console.error(error.response);
@@ -15,7 +15,7 @@ export async function getZapatos() {
 // buscar
 export async function buscarZapatos(busqueda) {
     try {
-        const response = await axios.get(`https://persicuf.up.railway.app/api/Zapato/buscarZapatos?busqueda=${busqueda}`);
+        const response = await axios.get(`https://persicufback-production.up.railway.app/api/Zapato/buscarZapatos?busqueda=${busqueda}`);
         return response.data; 
     } catch (error) {
         console.error(error.response);
@@ -26,7 +26,7 @@ export async function buscarZapatos(busqueda) {
 // POST
 export async function createZapato(nuevoZapato) {
     try {
-        const response = await axios.post("https://persicuf.up.railway.app/api/Zapato/crearZapato", nuevoZapato, {
+        const response = await axios.post("https://persicufback-production.up.railway.app/api/Zapato/crearZapato", nuevoZapato, {
             headers: getHeaders(),
         });
 
@@ -40,7 +40,7 @@ export async function createZapato(nuevoZapato) {
 //DELETE
 export async function deleteZapato(ZapatoId) {
     try {
-        const response = await axios.delete(`https://persicuf.up.railway.app/api/Zapato/eliminarZapato?ID=${ZapatoId}`, {
+        const response = await axios.delete(`https://persicufback-production.up.railway.app/api/Zapato/eliminarZapato?ID=${ZapatoId}`, {
             headers: getHeaders(),
         });
 

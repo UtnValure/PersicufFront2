@@ -20,7 +20,7 @@ export function getUsuarioID() {
 // GET
 export async function getUsuarios() {
     try {
-        const response = await axios.get("https://persicuf.up.railway.app/api/Usuario/obtenerUsuarios");
+        const response = await axios.get("https://persicufback-production.up.railway.app/api/Usuario/obtenerUsuarios");
         return response;
     } catch (error) {
         console.log(error.response);
@@ -31,7 +31,7 @@ export async function getUsuarios() {
 // GETNOMBREUSUARIO
 export async function buscarUsuario(usuarioId) {
     try {
-        const response = await axios.get(`https://persicuf.up.railway.app/api/Usuario/BuscarUsuario?ID=${usuarioId}`);
+        const response = await axios.get(`https://persicufback-production.up.railway.app/api/Usuario/BuscarUsuario?ID=${usuarioId}`);
         return response;
     } catch (error) {
         console.log(error.response);
@@ -42,7 +42,7 @@ export async function buscarUsuario(usuarioId) {
 // POST
 export async function createUsuario(nuevoUsuario) {
     try {
-        const response = await axios.post("https://persicuf.up.railway.app/api/Usuario/crearUsuario", nuevoUsuario, {
+        const response = await axios.post("https://persicufback-production.up.railway.app/api/Usuario/crearUsuario", nuevoUsuario, {
             headers: getHeaders(),
         });
 
@@ -56,7 +56,7 @@ export async function createUsuario(nuevoUsuario) {
 //DELETE
 export async function deleteUsuario(usuarioId) {
     try {
-        const response = await axios.delete(`https://persicuf.up.railway.app/api/Usuario/eliminarUsuario?ID=${usuarioId}`, {
+        const response = await axios.delete(`https://persicufback-production.up.railway.app/api/Usuario/eliminarUsuario?ID=${usuarioId}`, {
             headers: getHeaders(),
         });
 
@@ -70,7 +70,7 @@ export async function deleteUsuario(usuarioId) {
 export async function updateUsuario(usuarioId, permisoID) {
     try {
         // Enviar usuarioId y permisoID como parámetros de consulta
-        const response = await axios.patch(`https://persicuf.up.railway.app/api/Usuario/modificarPermisoUsuario?ID=${usuarioId}&permisoID=${permisoID}`, {
+        const response = await axios.patch(`https://persicufback-production.up.railway.app/api/Usuario/modificarPermisoUsuario?ID=${usuarioId}&permisoID=${permisoID}`, {
             headers: getHeaders(),
         });
 

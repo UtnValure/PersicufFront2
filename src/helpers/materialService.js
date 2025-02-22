@@ -19,7 +19,7 @@ export async function getMaterialID(nombreMaterial) {
 
 export async function buscarMaterialPorID(ID) {
     try {
-        const response = await axios.get(`https://persicuf.up.railway.app/api/Material/buscarMaterialPorID?ID=${ID}`);
+        const response = await axios.get(`https://persicufback-production.up.railway.app/api/Material/buscarMaterialPorID?ID=${ID}`);
         return response.data.datos || []; // Devuelve solo el cuerpo de la respuesta
     } catch (error) {
         console.error(error.response);
@@ -32,7 +32,7 @@ export async function buscarMaterialPorID(ID) {
 
 export async function getMateriales() {
     try {
-        const response = await axios.get("https://persicuf.up.railway.app/api/Material/obtenerMateriales");
+        const response = await axios.get("https://persicufback-production.up.railway.app/api/Material/obtenerMateriales");
         return response.data;
     } catch (error) {
         console.error(error.response);
@@ -42,7 +42,7 @@ export async function getMateriales() {
 
 export async function createMaterial(nuevoMaterial) {
     try {
-        const response = await axios.post("https://persicuf.up.railway.app/api/Material/crearMaterial", nuevoMaterial, {
+        const response = await axios.post("https://persicufback-production.up.railway.app/api/Material/crearMaterial", nuevoMaterial, {
             headers: getHeaders(),
         });
 
@@ -55,7 +55,7 @@ export async function createMaterial(nuevoMaterial) {
 
 export async function deleteMaterial(materialId) {
     try {
-        const response = await axios.delete(`https://persicuf.up.railway.app/api/Material/eliminarMaterial?ID=${materialId}`, {
+        const response = await axios.delete(`https://persicufback-production.up.railway.app/api/Material/eliminarMaterial?ID=${materialId}`, {
             headers: getHeaders(),
         });
 

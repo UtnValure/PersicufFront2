@@ -23,7 +23,7 @@ export async function getMangaID(nombreManga) {
 
 export async function getMangas() {
     try {
-        const response = await axios.get("https://persicuf.up.railway.app/api/Manga/obtenerMangas");
+        const response = await axios.get("https://persicufback-production.up.railway.app/api/Manga/obtenerMangas");
         return response.data;
     } catch (error) {
         console.error(error.response);
@@ -33,7 +33,7 @@ export async function getMangas() {
 
 export async function createManga(nuevoManga) {
     try {
-        const response = await axios.post("https://persicuf.up.railway.app/api/Manga/crearManga", nuevoManga, {
+        const response = await axios.post("https://persicufback-production.up.railway.app/api/Manga/crearManga", nuevoManga, {
             headers: getHeaders(),
         });
 
@@ -46,7 +46,7 @@ export async function createManga(nuevoManga) {
 
 export async function deleteTalleAlfabetico(MangaId) {
     try {
-        const response = await axios.delete(`https://persicuf.up.railway.app/api/Manga/eliminarManga?ID=${MangaId}`, {
+        const response = await axios.delete(`https://persicufback-production.up.railway.app/api/Manga/eliminarManga?ID=${MangaId}`, {
             headers: getHeaders(),
         });
 
