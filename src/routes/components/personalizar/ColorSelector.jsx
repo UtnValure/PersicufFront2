@@ -38,7 +38,7 @@ function ColorSelector({ onColorSelect }) {
               cursor: 'pointer',
               border: '1px solid black',
             }}
-            title={color.nombre} // Muestra el nombre al pasar el cursor
+            title={color.nombre}
           />
         ))}
       </div>
