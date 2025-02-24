@@ -165,7 +165,7 @@ const Remera = () => {
 
         <div className="col-md-7 text-start">
           <h1 className="h2">{nombre}</h1>
-          <div className="mt-3">
+          {/* <div className="mt-3">
             <StarRatings
               rating={parseFloat(valoracionTotal) || 0}
               starRatedColor="#FFD700"
@@ -174,7 +174,7 @@ const Remera = () => {
               starSpacing="3px"
             />
             <span className="ms-2">({valoracionTotal})</span>
-          </div>
+          </div> */}
 
           <p><strong>Precio:</strong> $ {precio}</p>
           <p>{descripcion}</p>
