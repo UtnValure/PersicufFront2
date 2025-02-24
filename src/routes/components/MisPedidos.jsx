@@ -13,17 +13,21 @@ import Cargando from './Cargando';
 import "../../styles/MisPedidos.css";
 
 const MisPedidos = () => {
-  const { userId, token } = useContext(AuthContext); // Obtén el token del contexto
+  const { userId, authorization } = useContext(AuthContext); // Obtén el token del contexto
   const [pedidos, setPedidos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [mensaje, setMensaje] = useState("");
   const [domicilios, setDomicilios] = useState({});
   const navigate = useNavigate(); // Usa useNavigate para redirigir
 
+
   // Verifica el token cada vez que el componente se monta o se actualiza
   useEffect(() => {
-    if (isTokenExpired(token)) {
-      localStorage.removeItem('token'); // Elimina el token expirado
+    if (isTokenExpired(authorization)) {
+      localStorage.removeItem("userRole");
+      localStorage.removeItem("userId");
+      localStorage.removeItem("user");
+      localStorage.removeItem("authorization");
       navigate('/login'); // Redirige al usuario a la pantalla de inicio de sesión
     }
   }, [token, navigate]);

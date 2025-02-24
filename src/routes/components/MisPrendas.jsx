@@ -59,17 +59,21 @@ const obtenerPrendasConCategoria = async (userId) => {
 };
 
 const MisPrendas = () => {
-  const { userId, token } = useContext(AuthContext);
+  const { userId, authorization } = useContext(AuthContext);
   const [prendas, setPrendas] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [mensaje, setMensaje] = useState("");
   const navigate = useNavigate();
 
 
+  // Verifica el token cada vez que el componente se monta o se actualiza
   useEffect(() => {
-    if (isTokenExpired(token)) {
-      localStorage.removeItem('token'); 
-      navigate('/login'); 
+    if (isTokenExpired(authorization)) {
+      localStorage.removeItem("userRole");
+      localStorage.removeItem("userId");
+      localStorage.removeItem("user");
+      localStorage.removeItem("authorization");
+      navigate('/login'); // Redirige al usuario a la pantalla de inicio de sesión
     }
   }, [token, navigate]);
 

@@ -49,13 +49,16 @@ const DetallesPedido = () => {
     setTimeout(() => setShowAlert(false), 3000);
   };
 
-  const { token } = useContext(AuthContext); // Obtén el token del contexto
+  const { authorization } = useContext(AuthContext); // Obtén el token del contexto
   const navigate = useNavigate(); // Usa useNavigate para redirigir
 
   // Verifica el token cada vez que el componente se monta o se actualiza
   useEffect(() => {
-    if (isTokenExpired(token)) {
-      localStorage.removeItem('token'); // Elimina el token expirado
+    if (isTokenExpired(authorization)) {
+      localStorage.removeItem("userRole");
+      localStorage.removeItem("userId");
+      localStorage.removeItem("user");
+      localStorage.removeItem("authorization");
       navigate('/login'); // Redirige al usuario a la pantalla de inicio de sesión
     }
   }, [token, navigate]);
