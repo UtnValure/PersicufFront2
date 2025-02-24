@@ -48,7 +48,7 @@ const usePersonalizacionCamperas = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
 
 
-  const { authorization } = useContext(AuthContext); // Obtén el token del contexto
+  const { authorization } = useContext(AuthContext);
   const navigate = useNavigate(); // Usa useNavigate para redirigir
 
   // Verifica el token cada vez que el componente se monta o se actualiza
