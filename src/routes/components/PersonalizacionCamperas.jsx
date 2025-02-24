@@ -17,7 +17,7 @@ import { getubicacionID } from '../../helpers/ubicacionesService';
 import { getRubros } from '../../helpers/rubroService';
 import axios from "axios";
 import domToImage from 'dom-to-image-more';
-import { createPost } from '../../helpers/reviewService';
+// import { createPost } from '../../helpers/reviewService';
 import '../../styles/Personalizacion.css';
 
 const base64ToFile = (base64String, filename) => {
@@ -229,13 +229,13 @@ function PersonalizacionCamperas() {
         imagen = await getimgID(renderURL);
       }
 
-      const post = {
-        title: jacketName,
-        content: "Una campera personalizada en Persicuf!",
-      };
+      // const post = {
+      //   title: jacketName,
+      //   content: "Una campera personalizada en Persicuf!",
+      // };
 
-      console.log("Post a enviar:", post);
-      const postD = await createPost(post);
+      // console.log("Post a enviar:", post);
+      // const postD = await createPost(post);
 
       const jacketData = {
         precio: price,
@@ -247,7 +247,7 @@ function PersonalizacionCamperas() {
         usuarioID: userId,
         nombre: jacketName,
         talleAlfabeticoID: await getTalleAlfabeticoID(selectedSize),
-        postID: postD,
+        postID: 0,
       };
 
       await createCampera(jacketData);

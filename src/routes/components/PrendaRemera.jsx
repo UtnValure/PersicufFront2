@@ -14,8 +14,8 @@ import { getUbicacionPorID } from '../../helpers/ubicacionesService';
 import { getImagenPorID, getimgURLporID } from '../../helpers/imagenService';
 import { getCorteCuelloPorID } from '../../helpers/corteCuelloService';
 import ProductViewer from './persoremera/ProductViewer';
-import { obtenerReview, obtenerValoracionTotal, obtenerNombreUsuarioReview } from '../../helpers/reviewService';
-import StarRatings from 'react-star-ratings';
+// import { obtenerReview, obtenerValoracionTotal, obtenerNombreUsuarioReview } from '../../helpers/reviewService';
+// import StarRatings from 'react-star-ratings';
 import Cargando from './Cargando';
 
 const Remera = () => {
@@ -39,8 +39,8 @@ const Remera = () => {
   const [pos2, setPos2] = useState('');
   const [path2, setPath2] = useState('');
   const [imagenDirrecion, setImagenDireccion] = useState('');
-  const [reseñas, setReseñas] = useState([]);
-  const [valoracionTotal, setValoracionTotal] = useState(0);
+  // const [reseñas, setReseñas] = useState([]);
+  // const [valoracionTotal, setValoracionTotal] = useState(0);
 
   const handleComprarAhora = () => {
     navigate('/detalles-pedido', {
@@ -104,20 +104,20 @@ const Remera = () => {
           setPos2('Espalda');
         }
 
-        const reseñasData = await obtenerReview(data.datos.postID);
-        setValoracionTotal(await obtenerValoracionTotal(data.datos.postID));
+        // const reseñasData = await obtenerReview(data.datos.postID);
+        // setValoracionTotal(await obtenerValoracionTotal(data.datos.postID));
 
-        if (reseñasData && Array.isArray(reseñasData)) {
-          const reseñasConNombres = await Promise.all(
-            reseñasData.map(async (reseña) => {
-              const nombreUsuario = await obtenerNombreUsuarioReview(reseña.owner);
-              return { ...reseña, owner: nombreUsuario || 'Usuario no disponible' };
-            })
-          );
-          setReseñas(reseñasConNombres);
-        } else {
-          setReseñas([]);
-        }
+        // if (reseñasData && Array.isArray(reseñasData)) {
+        //   const reseñasConNombres = await Promise.all(
+        //     reseñasData.map(async (reseña) => {
+        //       const nombreUsuario = await obtenerNombreUsuarioReview(reseña.owner);
+        //       return { ...reseña, owner: nombreUsuario || 'Usuario no disponible' };
+        //     })
+        //   );
+        //   setReseñas(reseñasConNombres);
+        // } else {
+        //   setReseñas([]);
+        // }
 
         setCargando(false);
       } catch (err) {
@@ -200,9 +200,9 @@ const Remera = () => {
             />
           </div>
           <button className="btn btn-primary mt-4 me-3" onClick={handleComprarAhora}>Comprar ahora</button>
-          <button className="btn btn-primary mt-4" onClick={() => window.open(`http://localhost:8000/post/${Remera.datos.postID}`, '_blank')}>Enviar Reseña</button>
+          {/* <button className="btn btn-primary mt-4" onClick={() => window.open(`http://localhost:8000/post/${Remera.datos.postID}`, '_blank')}>Enviar Reseña</button> */}
 
-          <div className="mt-5">
+          {/* <div className="mt-5">
             <h3 className='text-start'>Comentarios:</h3>
             {reseñas.length > 0 ? (
               reseñas.map((reseña, index) => (
@@ -215,7 +215,7 @@ const Remera = () => {
             ) : (
               <p>No hay comentarios disponibles.</p>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

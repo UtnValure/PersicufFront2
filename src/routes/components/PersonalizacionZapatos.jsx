@@ -15,7 +15,7 @@ import { getRubros } from '../../helpers/rubroService';
 import { createImagen, getimgID } from '../../helpers/imagenService';
 import axios from "axios";
 import domToImage from 'dom-to-image';
-import { createPost } from '../../helpers/reviewService';
+// import { createPost } from '../../helpers/reviewService';
 import '../../styles/Personalizacion.css';
 
 const usePersonalizacionZapatos = () => {
@@ -186,13 +186,13 @@ function PersonalizacionZapatos() {
         imagen = await getimgID(renderURL);
       }
 
-      const post = {
-        title: shoeName,
-        content: "Unos zapatos personalizados en Persicuf!",
-      };
+      // const post = {
+      //   title: shoeName,
+      //   content: "Unos zapatos personalizados en Persicuf!",
+      // };
 
-      console.log("Post a enviar:", post);
-      const postD = await createPost(post);
+      // console.log("Post a enviar:", post);
+      // const postD = await createPost(post);
 
       const shoeData = {
         precio: price,
@@ -204,7 +204,7 @@ function PersonalizacionZapatos() {
         nombre: shoeName,
         puntaMetal: hasMetalTip,
         talleNumericoID: await getTalleNumericoID(selectedSize),
-        postID: postD,
+        postID: 0,
       };
 
       await createZapato(shoeData);

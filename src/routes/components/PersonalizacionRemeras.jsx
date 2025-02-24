@@ -19,7 +19,7 @@ import { getubicacionID } from '../../helpers/ubicacionesService';
 import { getRubros } from '../../helpers/rubroService';
 import axios from "axios";
 import domToImage from 'dom-to-image-more';
-import { createPost } from '../../helpers/reviewService';
+// import { createPost } from '../../helpers/reviewService';
 import '../../styles/Personalizacion.css';
 
 const base64ToFile = (base64String, filename) => {
@@ -245,13 +245,13 @@ function PersonalizacionRemeras() {
         imagen = await getimgID(renderURL);
       }
 
-      const post = {
-        title: shirtName,
-        content: "Una remera personalizada en Persicuf!",
-      };
+      // const post = {
+      //   title: shirtName,
+      //   content: "Una remera personalizada en Persicuf!",
+      // };
 
-      console.log("Post a enviar:", post);
-      const postD = await createPost(post);
+      // console.log("Post a enviar:", post);
+      // const postD = await createPost(post);
 
       const shirtData = {
         precio: price,
@@ -265,7 +265,7 @@ function PersonalizacionRemeras() {
         talleAlfabeticoID: await getTalleAlfabeticoID(selectedSize),
         corteCuelloID: await getCorteCuelloID(selectedNeckline),
         mangaID: await getMangaID(selectedSleeve),
-        postID: postD,
+        postID: 0,
       };
 
       await createRemera(shirtData);

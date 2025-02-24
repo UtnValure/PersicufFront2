@@ -7,8 +7,8 @@ import { getZapatos } from '../../helpers/zapatosService';
 import { buscarUsuario } from '../../helpers/usuarios/usuariosService';
 import { getimgURLporID } from '../../helpers/imagenService';
 import { Link } from 'react-router-dom';
-import { obtenerValoracionTotal } from '../../helpers/reviewService';
-import StarRatings from 'react-star-ratings';
+// import { obtenerValoracionTotal } from '../../helpers/reviewService';
+// import StarRatings from 'react-star-ratings';
 import "bootswatch/dist/lux/bootstrap.min.css";
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -142,11 +142,11 @@ const HomeForm = () => {
     try {
       const response = await buscarUsuario(usuarioID);
       const nombre = response.data.datos.nombreUsuario;
-      const valoracion = await obtenerValoracionTotal(postID);
+      // const valoracion = await obtenerValoracionTotal(postID);
       setCreadores((prev) => ({
         ...prev,
         [usuarioID]: nombre,
-        [`valoracionTotal-${postID}`]: valoracion,
+        // [`valoracionTotal-${postID}`]: valoracion,
       }));
     } catch (error) {
       console.error(`Error al obtener el creador con ID ${usuarioID}:`, error);
@@ -156,7 +156,7 @@ const HomeForm = () => {
   // Buscar los nombres de los creadores al cargar las prendas
   useEffect(() => {
     [...remeras, ...pantalones, ...camperas, ...zapatos].forEach((item) => {
-      fetchCreador(item.usuarioID, item.postID);
+      fetchCreador(item.usuarioID);
     });
   }, [remeras, pantalones, camperas, zapatos]);
 
@@ -204,7 +204,7 @@ const HomeForm = () => {
                   />
                   <div className="card-body d-flex flex-column">
                     <h5 className="card-title">{item.nombre}</h5>
-                    <div className="mt-3">
+                    {/* <div className="mt-3">
                       <StarRatings
                         rating={parseFloat(creadores[`valoracionTotal-${item.postID}`]) || 0}
                         starRatedColor="#FFD700"
@@ -213,7 +213,7 @@ const HomeForm = () => {
                         starSpacing="3px"
                       />
                       <span className="ms-2">({creadores[`valoracionTotal-${item.postID}`]})</span>
-                    </div>
+                    </div> */}
                     <p className="card-text"><strong>Precio: </strong>$ {item.precio}</p>
                     <p className="card-text">
                       <strong>Creador: </strong>

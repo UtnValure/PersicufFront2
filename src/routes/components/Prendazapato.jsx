@@ -11,8 +11,8 @@ import { buscarUsuario } from '../../helpers/usuarios/usuariosService';
 import { getTalleNumericoPorID } from '../../helpers/TNService';
 import { getimgURLporID } from '../../helpers/imagenService';
 import ProductViewer from './persozapato/ProductViewer';
-import { obtenerReview, obtenerValoracionTotal, obtenerNombreUsuarioReview } from '../../helpers/reviewService';
-import StarRatings from 'react-star-ratings';
+// import { obtenerReview, obtenerValoracionTotal, obtenerNombreUsuarioReview } from '../../helpers/reviewService';
+// import StarRatings from 'react-star-ratings';
 import Cargando from './Cargando';
 
 const Zapato = () => {
@@ -69,20 +69,20 @@ const Zapato = () => {
         setPuntaM(dataZ.puntaMetal);
         setImagenDireccion(imagenData);
 
-        const reseñasData = await obtenerReview(data.datos.postID);
-        setValoracionTotal(await obtenerValoracionTotal(data.datos.postID));
+        // const reseñasData = await obtenerReview(data.datos.postID);
+        // setValoracionTotal(await obtenerValoracionTotal(data.datos.postID));
 
-        if (reseñasData && Array.isArray(reseñasData)) {
-          const reseñasConNombres = await Promise.all(
-            reseñasData.map(async (reseña) => {
-              const nombreUsuario = await obtenerNombreUsuarioReview(reseña.owner);
-              return { ...reseña, owner: nombreUsuario || 'Usuario no disponible' };
-            })
-          );
-          setReseñas(reseñasConNombres);
-        } else {
-          setReseñas([]);
-        }
+        // if (reseñasData && Array.isArray(reseñasData)) {
+        //   const reseñasConNombres = await Promise.all(
+        //     reseñasData.map(async (reseña) => {
+        //       const nombreUsuario = await obtenerNombreUsuarioReview(reseña.owner);
+        //       return { ...reseña, owner: nombreUsuario || 'Usuario no disponible' };
+        //     })
+        //   );
+        //   setReseñas(reseñasConNombres);
+        // } else {
+        //   setReseñas([]);
+        // }
 
         setCargando(false);
       } catch (err) {
@@ -116,7 +116,7 @@ const Zapato = () => {
 
         <div className="col-md-7 text-start">
           <h1 className="h2">{nombre}</h1>
-          <div className="mt-3">
+          {/* <div className="mt-3">
             <StarRatings
               rating={parseFloat(valoracionTotal) || 0}
               starRatedColor="#FFD700"
@@ -125,7 +125,7 @@ const Zapato = () => {
               starSpacing="3px"
             />
             <span className="ms-2">({valoracionTotal})</span>
-          </div>
+          </div> */}
 
           <p><strong>Precio:</strong> $ {precio}</p>
           <p>{descripcion}</p>
@@ -150,7 +150,7 @@ const Zapato = () => {
             />
           </div>
           <button className="btn btn-primary mt-4 me-3" onClick={handleComprarAhora}>Comprar ahora</button>
-          <button className="btn btn-primary mt-4" onClick={() => window.open(`http://localhost:8000/post/${Zapato.datos.postID}`, '_blank')}>Enviar Reseña</button>
+          {/* <button className="btn btn-primary mt-4" onClick={() => window.open(`http://localhost:8000/post/${Zapato.datos.postID}`, '_blank')}>Enviar Reseña</button>
 
           <div className="mt-5">
             <h3 className='text-start'>Comentarios:</h3>
@@ -165,7 +165,7 @@ const Zapato = () => {
             ) : (
               <p>No hay comentarios disponibles.</p>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

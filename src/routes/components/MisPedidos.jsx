@@ -8,7 +8,7 @@ import { getDomicilioPorID } from "../../helpers/domicilioService";
 import { getPedidosPrenda } from "../../helpers/pedidoprendaService";
 import { getPrendaPorID } from "../../helpers/prendasService";
 import { getimgURLporID } from "../../helpers/imagenService";
-import { getEnvio } from "../../helpers/envioAPI";
+// import { getEnvio } from "../../helpers/envioAPI";
 import Cargando from './Cargando';
 import "../../styles/MisPedidos.css";
 
@@ -56,7 +56,7 @@ const MisPedidos = () => {
               let prenda;
               let url;
               let cantidad;
-              let envio;
+              // let envio;
 
               // Obtener las prendas relacionadas a este pedido
               try {
@@ -71,7 +71,7 @@ const MisPedidos = () => {
                 prenda = await getPrendaPorID(prend.prendaID);
                 url = await getimgURLporID(prenda.datos.imagenID);
                 cantidad = prend.cantidad;
-                envio = await getEnvio(pedido.nroSeguimiento);
+                // envio = await getEnvio(pedido.nroSeguimiento);
 
               } catch (error) {
                 console.error(`Error al obtener prendas para pedido ID ${pedido.id}:`, error);
@@ -82,7 +82,6 @@ const MisPedidos = () => {
                 try {
                   const domicilio = await getDomicilioPorID(pedido.domicilioID);
                   domiciliosData[pedido.domicilioID] = domicilio;
-                  console.log("Envio:", envio);
                 } catch (error) {
                   console.error(`Error al obtener domicilio para ID ${pedido.domicilioID}:`, error);
                   domiciliosData[pedido.domicilioID] = { calle: "Desconocida", numero: "N/A" };
@@ -95,7 +94,7 @@ const MisPedidos = () => {
                 prenda,
                 url,
                 cantidad,
-                envio,
+                // envio,
               });
             })
           );
@@ -128,7 +127,7 @@ const MisPedidos = () => {
           {pedidos.map((pedido, index) => (
             <Col key={index} xs={12} sm={6} lg={4}>
               <a
-                href={`https://veloway-frontend.vercel.app/client/shipment/${pedido.nroSeguimiento}`}
+                // href={`https://veloway-frontend.vercel.app/client/shipment/${pedido.nroSeguimiento}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ textDecoration: "none", color: "inherit" }}
@@ -145,7 +144,7 @@ const MisPedidos = () => {
                     <Card.Text className="text-muted">{`Prenda: ${pedido.prenda.datos.nombre}`}</Card.Text>
                     <Card.Text className="text-muted">{`Cantidad: ${pedido.cantidad}`}</Card.Text>
                     <Card.Text className="text-muted">{`Domicilio: ${domicilios[pedido.domicilioID]?.calle || "Desconocida"} ${domicilios[pedido.domicilioID]?.numero || "N/A"}`}</Card.Text>
-                    <Card.Text className="text-muted">{`Estado: ${pedido.envio.estado}`}</Card.Text>
+                    {/* <Card.Text className="text-muted">{`Estado: ${pedido.envio.estado}`}</Card.Text> */}
                   </Card.Body>
                 </Card>
               </a>

@@ -3,8 +3,8 @@ import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { getRemeras } from '../../helpers/remerasService';
 import { buscarUsuario } from '../../helpers/usuarios/usuariosService';
 import { getimgURLporID } from "../../helpers/imagenService";
-import { obtenerValoracionTotal } from '../../helpers/reviewService';
-import StarRatings from 'react-star-ratings';
+// import { obtenerValoracionTotal } from '../../helpers/reviewService';
+// import StarRatings from 'react-star-ratings';
 import Cargando from './Cargando';
 import "../../styles/vermas.css"; // Importa el archivo CSS
 
@@ -26,9 +26,9 @@ const VerMasRemeras = () => {
                 try {
                   const imageUrl = await getimgURLporID(item.imagenID);
                   const usuarioRespuesta = await buscarUsuario(item.usuarioID);
-                  const valoracionTotal = await obtenerValoracionTotal(item.postID);
+                  // const valoracionTotal = await obtenerValoracionTotal(item.postID);
                   const nombreUsuario = usuarioRespuesta?.data?.datos?.nombreUsuario || "Desconocido";
-                  return { ...item, creador: nombreUsuario, imageUrl, valoracionTotal };
+                  return { ...item, creador: nombreUsuario, imageUrl};
                 } catch (error) {
                   return { ...item, creador: "Desconocido", imageUrl };
                 }
@@ -78,7 +78,7 @@ const VerMasRemeras = () => {
                 />
                 <Card.Body className="d-flex flex-column">
                   <h5 className="card-title">{item.nombre}</h5>
-                  <div className="mt-3">
+                  {/* <div className="mt-3">
                     <StarRatings
                       rating={parseFloat(item.valoracionTotal) || 0}
                       starRatedColor="#FFD700"
@@ -87,7 +87,7 @@ const VerMasRemeras = () => {
                       starSpacing="3px"
                     />
                     <span className="ms-2">({item.valoracionTotal})</span>
-                  </div>
+                  </div> */}
                   <p className="card-text"><strong>Precio: </strong>{formatPrice(item.precio)}</p>
                   <p className="card-text"><strong>Creador: </strong>{item.creador}</p>
                   <Button variant="primary" href={`/remera/${item.id}`} className="mt-auto">

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { getDomicilioIDUsuario, createDomicilio, deleteDomicilio } from "../../helpers/domicilioService";
 import { createPedido, getUltimoPedidoUsuario, putPedido } from '../../helpers/pedidosService';
 import { createPedidoPrenda } from '../../helpers/pedidoprendaService';
-import { createEnvio } from '../../helpers/envioAPI';
+// import { createEnvio } from '../../helpers/envioAPI';
 import { getDomicilioPorID } from '../../helpers/domicilioService';
 import Cargando from './Cargando';
 import '../../styles/detallesPedido.css'
@@ -149,28 +149,28 @@ const DetallesPedido = () => {
         pedidoID: pedidoID,
       };
 
-      await createPedidoPrenda(pedidoPrendaData);
-      const origen = {
-        calle: "52",
-        numero: 777,
-        piso: null,
-        depto: null,
-        descripcion: "Fabrica Persicuf",
-        localidadID: 5,
-      };
+      // await createPedidoPrenda(pedidoPrendaData);
+      // const origen = {
+      //   calle: "52",
+      //   numero: 777,
+      //   piso: null,
+      //   depto: null,
+      //   descripcion: "Fabrica Persicuf",
+      //   localidadID: 5,
+      // };
 
-      let destino = await getDomicilioPorID(selectedDomicilios);
-      const envioData = {
-        descripcion: "Envío de prenda Persicuf Nro: " + pedidoID,
-        hora: "17:30",
-        pesoGramos: (cantidad * 130) + 100,
-        reserva: true,
-        origen,
-        destino,
-        cliente: "850cdde8-591e-413d-8e67-48c649a8650f",
-      };
+      // let destino = await getDomicilioPorID(selectedDomicilios);
+      // const envioData = {
+      //   descripcion: "Envío de prenda Persicuf Nro: " + pedidoID,
+      //   hora: "17:30",
+      //   pesoGramos: (cantidad * 130) + 100,
+      //   reserva: true,
+      //   origen,
+      //   destino,
+      //   cliente: "850cdde8-591e-413d-8e67-48c649a8650f",
+      // };
 
-      let nroSeguimiento = await createEnvio(envioData);
+      let nroSeguimiento = 0;
 
       pedidoData = {
         precioTotal: total,

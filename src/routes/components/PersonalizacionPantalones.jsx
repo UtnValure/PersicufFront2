@@ -18,7 +18,7 @@ import { getRubros } from '../../helpers/rubroService';
 import axios from "axios";
 import { getLargos, getLargoID } from '../../helpers/largoService';
 import domToImage from 'dom-to-image-more';
-import { createPost } from '../../helpers/reviewService';
+// import { createPost } from '../../helpers/reviewService';
 import '../../styles/Personalizacion.css';
 
 const base64ToFile = (base64String, filename) => {
@@ -240,13 +240,13 @@ function PersonalizacionPantalones() {
         imagen = await getimgID(renderURL);
       }
 
-      const post = {
-        title: pantsName,
-        content: "Un pantalón personalizado en Persicuf!",
-      };
+      // const post = {
+      //   title: pantsName,
+      //   content: "Un pantalón personalizado en Persicuf!",
+      // };
 
-      console.log("Post a enviar:", post);
-      const postD = await createPost(post);
+      // console.log("Post a enviar:", post);
+      // const postD = await createPost(post);
 
       const pantsData = {
         precio: price,
@@ -259,7 +259,7 @@ function PersonalizacionPantalones() {
         usuarioID: userId,
         nombre: pantsName,
         talleAlfabeticoID: await getTalleAlfabeticoID(selectedSize),
-        postID: postD,
+        postID: 0,
       };
 
       await createPantalon(pantsData);

@@ -9,8 +9,8 @@ import { getCamperaPorIDUsuario } from "../../helpers/camperasService";
 import { getPantalonPorIDUsuario } from "../../helpers/pantalonesService";
 import { getRemeraPorIDUsuario } from "../../helpers/remerasService";
 import { getZapatoPorIDUsuario } from "../../helpers/zapatosService";
-import { obtenerValoracionTotal } from "../../helpers/reviewService";
-import StarRatings from 'react-star-ratings';
+// import { obtenerValoracionTotal } from "../../helpers/reviewService";
+// import StarRatings from 'react-star-ratings';
 import Cargando from './Cargando';
 import "../../styles/MisPrendas.css";
 
@@ -78,7 +78,7 @@ const MisPrendas = () => {
     return await Promise.all(
       prendas.map(async (prenda) => {
         const imageUrl = await getimgURLporID(prenda.imagenID);
-        const valoracionTotal = await obtenerValoracionTotal(prenda.postID);
+        // const valoracionTotal = await obtenerValoracionTotal(prenda.postID);
         return { ...prenda, imageUrl, valoracionTotal };
       })
     );
@@ -134,7 +134,7 @@ const MisPrendas = () => {
                 />
                 <Card.Body>
                   <Card.Title>{prenda.nombre}</Card.Title>
-                  <div className="star-ratings">
+                  {/* <div className="star-ratings">
                     <StarRatings
                       rating={parseFloat(prenda.valoracionTotal) || 0}
                       starRatedColor="#FFD700"
@@ -143,7 +143,7 @@ const MisPrendas = () => {
                       starSpacing="3px"
                     />
                     <span>({prenda.valoracionTotal})</span>
-                  </div>
+                  </div> */}
                   <Card.Text className="text-muted">
                     Precio: {formatPrice(prenda.precio)}
                   </Card.Text>

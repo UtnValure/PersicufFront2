@@ -8,8 +8,8 @@ import { buscarCamperas } from "../../helpers/camperasService";
 import { buscarPantalones } from "../../helpers/pantalonesService";
 import { buscarRemeras } from "../../helpers/remerasService";
 import { buscarZapatos } from "../../helpers/zapatosService";
-import { obtenerValoracionTotal } from "../../helpers/reviewService";
-import StarRatings from 'react-star-ratings';
+// import { obtenerValoracionTotal } from "../../helpers/reviewService";
+// import StarRatings from 'react-star-ratings';
 import Cargando from './Cargando';
 import "../../styles/ResultadosBusqueda.css";
 
@@ -100,7 +100,7 @@ export default function ResultadosBusqueda() {
             respuesta.map(async (prenda) => {
               if (prenda.usuarioID) {
                 try {
-                  const valoracionTotal = await obtenerValoracionTotal(prenda.postID);
+                  // const valoracionTotal = await obtenerValoracionTotal(prenda.postID);
                   const imageUrl = await getimgURLporID(prenda.imagenID);
                   const usuarioRespuesta = await buscarUsuario(prenda.usuarioID);
                   if (usuarioRespuesta?.data) {
@@ -108,14 +108,13 @@ export default function ResultadosBusqueda() {
                       ...prenda,
                       creador: usuarioRespuesta.data.datos?.nombreUsuario || "Desconocido",
                       imageUrl,
-                      valoracionTotal
                     };
                   }
                 } catch (error) {
                   console.error(`Error al buscar los resultados: `, error);
                 }
               }
-              return { ...prenda, creador: "Desconocido", imageUrl: "", valoracionTotal: 0 };
+              return { ...prenda, creador: "Desconocido", imageUrl: ""};
             })
           );
           setResultados(resultados);
@@ -197,7 +196,7 @@ export default function ResultadosBusqueda() {
                 />
                 <Card.Body className="d-flex flex-column">
                   <h5 className="card-title">{prenda.nombre}</h5>
-                  <div className="mt-3">
+                  {/* <div className="mt-3">
                     <StarRatings
                       rating={parseFloat(prenda.valoracionTotal) || 0}
                       starRatedColor="#FFD700"
@@ -206,7 +205,7 @@ export default function ResultadosBusqueda() {
                       starSpacing="2px"
                     />
                     <span className="ms-2">({prenda.valoracionTotal})</span>
-                  </div>
+                  </div> */}
                   <p className="card-text">
                     <strong>Precio: </strong>
                     {formatPrice(prenda.precio)}
