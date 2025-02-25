@@ -60,7 +60,7 @@ const usePersonalizacionCamperas = () => {
       localStorage.removeItem("authorization");
       navigate('/login'); // Redirige al usuario a la pantalla de inicio de sesión
     }
-  }, [token, navigate]);
+  }, [authorization, navigate]);
 
   useEffect(() => {
     const fetchAllData = async () => {

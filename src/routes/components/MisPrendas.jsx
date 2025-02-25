@@ -75,7 +75,7 @@ const MisPrendas = () => {
       localStorage.removeItem("authorization");
       navigate('/login'); // Redirige al usuario a la pantalla de inicio de sesión
     }
-  }, [token, navigate]);
+  }, [authorization, navigate]);
 
 
   const addImageURLsToPrendas = async (prendas) => {
