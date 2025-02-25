@@ -51,7 +51,8 @@ const usePersonalizacionRemeras = () => {
   const [price, setPrice] = useState(0);
   const [categoryTypes, setCategoryTypes] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [Authenticated, setAuthenticated] = useState('');
+  const [authenticated, setAuthenticated] = useState('');
+  const [loading, setLoading] = useState('');
 
   const { authorization } = useContext(AuthContext); // Obtén el token del contexto
   const navigate = useNavigate(); // Usa useNavigate para redirigir
