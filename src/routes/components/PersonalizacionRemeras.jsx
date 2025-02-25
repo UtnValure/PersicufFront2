@@ -54,31 +54,29 @@ const usePersonalizacionRemeras = () => {
   const [authenticated, setAuthenticated] = useState('');
   const [loading, setLoading] = useState('');
 
-  const { authorization } = useContext(AuthContext); // Obtén el token del contexto
+  let authorization = localStorage.getItem("authorization"); // Obtén el token del contexto
   const navigate = useNavigate(); // Usa useNavigate para redirigir
+  
 
+  // Verifica el token cada vez que el componente se monta o se actualiza
   useEffect(() => {
-  const verificarAutenticacion = async () => {
-    const storedAuthorization = localStorage.getItem("authorization");
-
-    if (storedAuthorization) {
-      const isExpired = await isTokenExpired(storedAuthorization);
-      if (isExpired) {
+    console.log(authorization);
+  
+    const verifyToken = async () => { // 🔹 Hacer que sea async
+      if (!authorization || (await isTokenExpired(authorization))) { // 🔹 Esperar el resultado
+        // Limpia el localStorage si el token no es válido o ha expirado
         localStorage.removeItem("userRole");
         localStorage.removeItem("userId");
         localStorage.removeItem("user");
         localStorage.removeItem("authorization");
-        navigate('/login'); // Redirige al usuario a la pantalla de inicio de sesión
-      } else {
-        setAuthenticated(storedAuthorization);
+  
+        // Redirige al usuario a la pantalla de inicio de sesión
+        navigate('/login');
       }
-    }
-    setLoading(false);
-  };
-
-  verificarAutenticacion();
-}, [navigate]);
-
+    };
+  
+    verifyToken(); // Ejecuta la verificación del token
+  }, [authorization, navigate]);
   useEffect(() => {
     const fetchAllData = async () => {
       try {

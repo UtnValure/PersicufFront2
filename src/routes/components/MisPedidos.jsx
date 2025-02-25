@@ -13,23 +13,34 @@ import Cargando from './Cargando';
 import "../../styles/MisPedidos.css";
 
 const MisPedidos = () => {
-  const { userId, authorization } = useContext(AuthContext); // Obtén el token del contexto
+  const { userId } = useContext(AuthContext); // Obtén el token del contexto
   const [pedidos, setPedidos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [mensaje, setMensaje] = useState("");
   const [domicilios, setDomicilios] = useState({});
-  const navigate = useNavigate(); // Usa useNavigate para redirigir
 
+  const navigate = useNavigate(); // Usa useNavigate para redirigir
+  let authorization = localStorage.getItem("authorization"); // Obtén el token del contexto
+  
 
   // Verifica el token cada vez que el componente se monta o se actualiza
   useEffect(() => {
-    if (isTokenExpired(authorization)) {
-      localStorage.removeItem("userRole");
-      localStorage.removeItem("userId");
-      localStorage.removeItem("user");
-      localStorage.removeItem("authorization");
-      navigate('/login'); // Redirige al usuario a la pantalla de inicio de sesión
-    }
+    console.log(authorization);
+  
+    const verifyToken = async () => { // 🔹 Hacer que sea async
+      if (!authorization || (await isTokenExpired(authorization))) { // 🔹 Esperar el resultado
+        // Limpia el localStorage si el token no es válido o ha expirado
+        localStorage.removeItem("userRole");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("user");
+        localStorage.removeItem("authorization");
+  
+        // Redirige al usuario a la pantalla de inicio de sesión
+        navigate('/login');
+      }
+    };
+  
+    verifyToken(); // Ejecuta la verificación del token
   }, [authorization, navigate]);
 
   useEffect(() => {
