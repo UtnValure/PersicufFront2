@@ -11,6 +11,7 @@ import { createPedidoPrenda } from '../../helpers/pedidoprendaService';
 import { getDomicilioPorID } from '../../helpers/domicilioService';
 import Cargando from './Cargando';
 import '../../styles/detallesPedido.css'
+import { isTokenExpired } from '../../helpers/autenticacion/tokenValidation';
 
 const DetallesPedido = () => {
   const { userId } = useContext(AuthContext);
@@ -162,7 +163,7 @@ const DetallesPedido = () => {
         pedidoID: pedidoID,
       };
 
-      // await createPedidoPrenda(pedidoPrendaData);
+      await createPedidoPrenda(pedidoPrendaData);
       // const origen = {
       //   calle: "52",
       //   numero: 777,

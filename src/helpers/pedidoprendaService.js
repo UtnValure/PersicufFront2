@@ -4,7 +4,9 @@ import {getHeaders} from "./headerService"
 // GET
 export async function getPedidosPrenda() {
     try {
-        const response = await axios.get("https://persicufback-production.up.railway.app/api/PedidoPrenda/obtenerPedidosPrenda");
+        const response = await axios.get("https://persicufback-production.up.railway.app/api/PedidoPrenda/obtenerPedidosPrenda", {
+            headers: getHeaders(),
+        });
         return response.data;
     } catch (error) {
         console.error(error.response);

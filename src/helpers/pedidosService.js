@@ -32,7 +32,9 @@ export async function getPedidosUsuario(ID) {
 // ultimo pedido
 export async function getUltimoPedidoUsuario(ID) {
     try {
-        const response = await axios.get(`https://persicufback-production.up.railway.app/api/Pedido/obtenerPedidosUsuario?ID=${ID}`);
+        const response = await axios.get(`https://persicufback-production.up.railway.app/api/Pedido/obtenerPedidosUsuario?ID=${ID}`, {
+            headers: getHeaders(),
+        });
         const pedidos = response.data.datos;  // Accede a 'datos' que contiene los pedidos
 
         // Verifica si se obtuvieron pedidos

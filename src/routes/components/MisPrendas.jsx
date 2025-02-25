@@ -94,7 +94,7 @@ const MisPrendas = () => {
       prendas.map(async (prenda) => {
         const imageUrl = await getimgURLporID(prenda.imagenID);
         // const valoracionTotal = await obtenerValoracionTotal(prenda.postID);
-        return { ...prenda, imageUrl, valoracionTotal };
+        return { ...prenda, imageUrl }; // , valoracionTotal
       })
     );
   };
