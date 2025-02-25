@@ -10,7 +10,7 @@ export async function isTokenExpired(token) {
       // Decodifica el payload del token
       const payload = JSON.parse(atob(parts[1]));
 
-      // Verifica si el payload tiene un campo 'exp'
+
       if (!payload.exp) {
           throw new Error("El token no tiene un campo de expiración (exp)");
       }
