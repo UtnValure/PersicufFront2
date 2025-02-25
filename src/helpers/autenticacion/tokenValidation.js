@@ -2,7 +2,6 @@ export async function isTokenExpired(token) {
   if (!token) return true;
 
   try {
-      // Divide el token en sus partes
       const parts = token.split('.');
       if (parts.length !== 3) {
           throw new Error("El token no tiene el formato correcto");
