@@ -8,8 +8,7 @@ export async function isTokenExpired(token) {
       }
 
       // Decodifica el payload del token
-      const payload = JSON.parse(atob(parts[1]));
-
+      const payload = JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/')));
 
       if (!payload.exp) {
           throw new Error("El token no tiene un campo de expiración (exp)");
@@ -19,9 +18,9 @@ export async function isTokenExpired(token) {
       const expirationTime = payload.exp * 1000;
 
       // Verifica si ha expirado
-      return Date.now() > expirationTime;
+      return Date.now() >= expirationTime;
   } catch (error) {
       console.error("Error al decodificar el token:", error);
       return true; // Si hay un error, considera el token como expirado
   }
-};
+}
