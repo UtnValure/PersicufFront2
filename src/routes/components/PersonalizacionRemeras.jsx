@@ -55,16 +55,27 @@ const usePersonalizacionRemeras = () => {
   const { authorization } = useContext(AuthContext); // Obtén el token del contexto
   const navigate = useNavigate(); // Usa useNavigate para redirigir
 
-  // Verifica el token cada vez que el componente se monta o se actualiza
   useEffect(() => {
-    if (isTokenExpired(authorization)) {
-      localStorage.removeItem("userRole");
-      localStorage.removeItem("userId");
-      localStorage.removeItem("user");
-      localStorage.removeItem("authorization");
-      navigate('/login'); // Redirige al usuario a la pantalla de inicio de sesión
+  const verificarAutenticacion = async () => {
+    const storedAuthorization = localStorage.getItem("authorization");
+
+    if (storedAuthorization) {
+      const isExpired = await isTokenExpired(storedAuthorization);
+      if (isExpired) {
+        localStorage.removeItem("userRole");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("user");
+        localStorage.removeItem("authorization");
+        navigate('/login'); // Redirige al usuario a la pantalla de inicio de sesión
+      } else {
+        setAuthenticated(storedAuthorization);
+      }
     }
-  }, [authorization, navigate]);
+    setLoading(false);
+  };
+
+  verificarAutenticacion();
+}, [navigate]);
 
   useEffect(() => {
     const fetchAllData = async () => {
